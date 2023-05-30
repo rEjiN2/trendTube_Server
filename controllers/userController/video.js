@@ -96,6 +96,7 @@ export const addView = async(req,res,next)=>{
 }
 
 export const randomVideos = async(req,res,next)=>{
+  res.header("Access-Control-Allow-Origin", "https://www.trendtube.online");
     try{
       const videos =await Video.aggregate([{$sample:{size:40}}])
       if(!videos) return res.status(200).json("sTAY tUNED fOR vIDEOS")
