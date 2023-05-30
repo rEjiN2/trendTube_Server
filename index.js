@@ -33,7 +33,7 @@ const connect = () => {
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://www.trendtube.online",
     credentials: true,
   })
 );
