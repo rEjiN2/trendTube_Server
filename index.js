@@ -13,7 +13,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
 import User from "./models/Users.js"
-import { createServer } from "http";
+
  
 
 const app = express();
@@ -30,11 +30,13 @@ const connect = () => {
       throw err;
     });
 };
+app.options('*', cors());
 
 app.use(
   cors({
     origin: "https://www.trendtube.online",
     credentials: true,
+    methods: ['GET', 'POST' ,'PUT' ,'DELETE']
   })
 );
 app.use(morgan("dev"));
