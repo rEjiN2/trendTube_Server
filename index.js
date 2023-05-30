@@ -74,6 +74,9 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/adminAuth", adminAuthRoutes);
 app.use("/api/adminVerify", adminVerifyRoutes);
+app.all("*" ,(req,res)=>{
+  res.send("Unautherized Acces")
+})
 app.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || "Something Went Wrong";
