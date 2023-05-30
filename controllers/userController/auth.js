@@ -4,7 +4,7 @@ import User from "../../models/Users.js";
 import bcrypt from "bcrypt";
 import { createError } from "../../error.js";
 import jwt from "jsonwebtoken";
-import { Server } from "socket.io";
+
 
 export const signUp = asyncHandler(async (req, res, next) => {
   try {
@@ -23,11 +23,6 @@ export const signUp = asyncHandler(async (req, res, next) => {
       .status(200)
       .json(others);
 
-    // Emit 'userLoggedIn' event
-    // const io = req.app.get("socketio");
-    // io.emit("userLoggedIn", newUser._id);
-    // newUser.online = true;
-    // await newUser.save();
   } catch (err) {
     next(err);
   }
@@ -60,11 +55,7 @@ export const signIn = async (req, res, next) => {
       .status(200)
       .json(others);
 
-    // // Emit 'userLoggedIn' event
-    // const io = req.app.get("socketio");
-    // io.emit("userLoggedIn", user._id);
-    // user.online = true;
-    // await user.save();
+
   } catch (err) {
     next(err);
   }
@@ -102,13 +93,7 @@ export const google = async (req, res, next) => {
 
 export const logout = async (req, res, next) => {
   try {
-    
-    // const io = req.app.get("socketio");
-    // io.emit("userLoggedOut", req.user.id);
-    // req.user.online = false;
-    // await req.user.save();
-
-    
+        
     res.clearCookie("access_token");
     res.status(200).end();
   } catch (err) {
