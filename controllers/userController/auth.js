@@ -21,7 +21,7 @@ export const signUp = asyncHandler(async (req, res, next) => {
       secure: true,
     })
       .status(200)
-      .json(others);
+      .json(others,token);
 
   } catch (err) {
     next(err);
