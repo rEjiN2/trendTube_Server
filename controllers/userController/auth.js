@@ -12,7 +12,7 @@ export const signUp = asyncHandler(async (req, res, next) => {
     const hash = bcrypt.hashSync(req.body.password, salt);
     const newUser = new User({ ...req.body, password: hash });
     await newUser.save();
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT);
+    const token = jwt.sign({ id: newUser._id }, "trendtube");
     const { password, ...others } = newUser._doc;
     res.cookie("access_token", token, {
       maxAge: 1000 * 60 * 60 * 1000,
