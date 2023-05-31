@@ -53,7 +53,7 @@ export const signIn = async (req, res, next) => {
       secure: true,
     })
       .status(200)
-      .json(token);
+      .json(others);
 
 
   } catch (err) {
