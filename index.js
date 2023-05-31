@@ -29,11 +29,9 @@ const connect = () => {
       throw err;
     });
 };
-
-
 app.use(
   cors({
-    origin: ["https://www.trendtube.online","https://api.trendtube.online"],
+    origin: ["https://www.trendtube.online"],
     credentials: true,
     methods: ['GET', 'POST' ,'PUT' ,'DELETE']
   })
