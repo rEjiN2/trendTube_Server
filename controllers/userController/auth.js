@@ -21,7 +21,7 @@ export const signUp = asyncHandler(async (req, res, next) => {
       secure: true,
     })
       .status(200)
-      .json(token);
+      .json(others);
 
   } catch (err) {
     next(err);
@@ -48,12 +48,12 @@ export const signIn = async (req, res, next) => {
     const { password, ...others } = user._doc;
     res.cookie("access_token", token, {
       maxAge: 1000 * 60 * 60 * 1000,
-      httpOnly: false,
+      httpOnly: true,
       sameSite: "none",
       secure: true,
     })
       .status(200)
-      .json(others);
+      .json(token);
 
 
   } catch (err) {
