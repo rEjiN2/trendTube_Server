@@ -16,7 +16,7 @@ export const adminSignin = async(req,res,next)=>{
         }
         if(admin.isAdmin){
             const token = jwt.sign({ id: admin._id }, process.env.JWT);
-        
+             console.log(token,"token")
         const { password, ...others } = admin._doc;
         res
           .cookie(
