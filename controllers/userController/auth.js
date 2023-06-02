@@ -17,7 +17,8 @@ export const signUp = asyncHandler(async (req, res, next) => {
     res.cookie("access_token", token, {
       maxAge: 1000 * 60 * 60 * 1000,
       httpOnly: false,
-      
+      domain: ".trendtube.online",
+      secure: true
     })
       .status(200)
       .json(others);
@@ -48,7 +49,8 @@ export const signIn = async (req, res, next) => {
     res.cookie("access_token", token, {
       maxAge: 1000 * 60 * 60 * 1000,
       httpOnly: false,
-      
+      domain: ".trendtube.online",
+      secure: true
     })
       .status(200)
       .json(others);
@@ -80,6 +82,8 @@ export const google = async (req, res, next) => {
       res.cookie("access_token", token, {
         maxAge: 60 * 60 * 1000,
         httpOnly: true,
+        domain: ".trendtube.online",
+        secure: true
       })
         .status(200)
         .json(savedUser._doc);
