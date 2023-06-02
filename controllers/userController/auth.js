@@ -96,7 +96,7 @@ export const google = async (req, res, next) => {
 export const logout = async (req, res, next) => {
   try {
         
-    res.clearCookie("access_token", { domain: ".trendtube.online" });
+    res.clearCookie("access_token");
     res.status(200).end();
   } catch (err) {
     next(err);
