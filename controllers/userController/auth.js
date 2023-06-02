@@ -83,7 +83,7 @@ export const google = async (req, res, next) => {
         maxAge: 60 * 60 * 1000,
         httpOnly: true,
         domain: ".trendtube.online",
-        secure: true
+       secure: true
       })
         .status(200)
         .json(savedUser._doc);
@@ -96,7 +96,7 @@ export const google = async (req, res, next) => {
 export const logout = async (req, res, next) => {
   try {
         
-    res.clearCookie("access_token",{ domain: ".trendtube.online" });
+    res.clearCookie("access_token");
     res.status(200).end();
   } catch (err) {
     next(err);
