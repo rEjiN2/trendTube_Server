@@ -18,6 +18,7 @@ export const signUp = asyncHandler(async (req, res, next) => {
       maxAge: 1000 * 60 * 60 * 1000,
       httpOnly: false,
       domain: ".trendtube.online",
+      sameSite: 'none',
       secure: true
     })
       .status(200)
@@ -50,6 +51,7 @@ export const signIn = async (req, res, next) => {
       maxAge: 1000 * 60 * 60 * 1000,
       httpOnly: false,
       domain: ".trendtube.online",
+      sameSite: 'none',
       secure: true
     })
       .status(200)
@@ -83,7 +85,8 @@ export const google = async (req, res, next) => {
         maxAge: 60 * 60 * 1000,
         httpOnly: true,
         domain: ".trendtube.online",
-       secure: true
+        sameSite: 'none',
+       secure: true,
       })
         .status(200)
         .json(savedUser._doc);
