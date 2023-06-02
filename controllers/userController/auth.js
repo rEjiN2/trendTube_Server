@@ -48,9 +48,8 @@ export const signIn = async (req, res, next) => {
     const { password, ...others } = user._doc;
     res.cookie("access_token", token, {
       maxAge: 1000 * 60 * 60 * 1000,
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      httpOnly: false,
+      
     })
       .status(200)
       .json(others);
