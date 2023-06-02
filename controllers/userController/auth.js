@@ -49,7 +49,7 @@ export const signIn = async (req, res, next) => {
     res.cookie("access_token", token, {
       maxAge: 1000 * 60 * 60 * 1000,
       httpOnly: false,
-      domain: ".trendtube.online"
+      domain: "www.trendtube.online"
     })
       .status(200)
       .json(others);
