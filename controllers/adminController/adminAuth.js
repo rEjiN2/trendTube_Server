@@ -23,10 +23,11 @@ export const adminSignin = async(req,res,next)=>{
             "adminAccess_token",
             token,
             {
-              maxAge:1000* 60 * 60 * 1000,
+              maxAge: 1000 * 60 * 60 * 1000,
               httpOnly: false,
+              domain: ".trendtube.online",
               sameSite: 'none',
-              secure: true 
+              secure: true
             }
           )
           .status(200)

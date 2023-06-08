@@ -83,10 +83,10 @@ export const google = async (req, res, next) => {
       const token = jwt.sign({ id: savedUser._id }, process.env.JWT);
       res.cookie("access_token", token, {
         maxAge: 60 * 60 * 1000,
-        httpOnly: true,
+        httpOnly: false,
         domain: ".trendtube.online",
         sameSite: 'none',
-       secure: true,
+        secure: true,
       })
         .status(200)
         .json(savedUser._doc);
