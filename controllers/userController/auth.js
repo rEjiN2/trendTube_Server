@@ -5,7 +5,6 @@ import bcrypt from "bcrypt";
 import { createError } from "../../error.js";
 import jwt from "jsonwebtoken";
 
-
 export const signUp = async (req, res, next) => {
   try {
     const salt = bcrypt.genSaltSync(10);
@@ -14,15 +13,8 @@ export const signUp = async (req, res, next) => {
     await newUser.save();
     const token = jwt.sign({ id: newUser._id }, process.env.JWT);
     const { password, ...others } = newUser._doc;
-    res.cookie("access_token", token, {
-      maxAge: 1000 * 60 * 60 * 1000,
-      httpOnly: false,
-      sameSite: "none",
-      secure: true,
-    })
-      .status(200)
-      .json(others);
-
+    const response = { token, ...others };
+    res.status(200).json(response);
   } catch (err) {
     next(err);
   }
