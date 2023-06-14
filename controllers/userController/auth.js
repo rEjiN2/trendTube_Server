@@ -12,6 +12,7 @@ export const signUp = async (req, res, next) => {
     const newUser = new User({ ...req.body, password: hash });
     await newUser.save();
     const token = jwt.sign({ id: newUser._id }, process.env.JWT);
+    console.log(token,"dsdsds");
     const { password, ...others } = newUser._doc;
     const response = { token, ...others };
     res.status(200).json(response);
