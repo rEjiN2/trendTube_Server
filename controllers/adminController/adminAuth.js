@@ -18,16 +18,14 @@ export const adminSignin = async(req,res,next)=>{
             const token = jwt.sign({ id: admin._id }, process.env.JWT);
              console.log(token,"token")
         const { password, ...others } = admin._doc;
-        res.cookie( "adminAccess_token",token,{
-              maxAge: 1000 * 60 * 60 * 1000,
-              httpOnly: false,
-              domain: "trendtube.online",
-              sameSite: 'none',
-              secure: true
-            }
-          )
-          .status(200)
-          .json(others);
+        const response = { token, ...others };
+    res.cookie("adminAccess_token", token, {
+      maxAge: 1000 * 60 * 60 * 1000,
+      httpOnly: false,
+      domain: ".api.trendtube.online",
+      sameSite: 'none',
+      secure: true
+    }).status(200).json(response);
         }else{
             return next(createError(400, "You are not an admin"));
         }
